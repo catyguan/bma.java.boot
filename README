@@ -1,0 +1,4 @@
+Java独立进程的启动程序，把指定目录的jar包加入主线程的ContextClassLoader里。
+
+启动脚本用法：
+java -cp boot.jar -Dbootmain="just.test.MyMain" -Dbootlibs="D:/workroom/java/wsmaven/test/target" Boot p1 p2 p3 p4
