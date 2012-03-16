@@ -1,2 +1,2 @@
-java -cp boot.jar -Dbootmain="just.test.MyMain" -Dbootlibs="D:/workroom/java/wsmaven/test/target" Boot p1 p2 p3 p4
+java -cp  ../target/boot-1.0.0.jar -Dbootmain="Boot$Test" -Dbootlibs=".;../target" Boot p1 p2 p3 p4
 pause

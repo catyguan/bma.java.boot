@@ -8,6 +8,17 @@ import java.util.List;
 
 public class Boot {
 
+	public static class Test {
+		public static void main(String[] args) {
+			System.out.println("hello world");
+			if (args != null && args.length > 0) {
+				for (int i = 0; i < args.length; i++) {
+					System.out.println("\targ[" + i + "] : " + args[i]);
+				}
+			}
+		}
+	}
+
 	/**
 	 * @param args
 	 */
@@ -19,15 +30,23 @@ public class Boot {
 		if (main == null) {
 			System.out.print("HOWTO: ");
 			System.out
-					.println("java -cp boot.jar -Dbootmain=xxx.yyy.MainClass [-Dbootlibs=filepath] Boot [param1 param2 ...]");
+					.println("java -cp boot.jar -Dbootmain=xxx.yyy.MainClass [-Dbootlibs=filepath1;filepath2] Boot [param1 param2 ...]");
 			System.out.println("bootmain - bootstrap main class");
 			System.out.println("bootlibs - file path for libs");
 			return;
 		}
 
-		File bootlibsDir = new File(libs);
 		List<File> files = new ArrayList<File>();
-		listAll(bootlibsDir, files);
+		if (libs != null) {
+			String[] libList = libs.split(";");
+			for (String lib : libList) {
+				lib = lib.trim();
+				if (lib.isEmpty())
+					continue;
+				File bootlibsDir = new File(lib);
+				listAll(bootlibsDir, files);
+			}
+		}
 
 		URL[] urls = new URL[files.size()];
 		for (int i = 0; i < urls.length; i++) {
@@ -37,7 +56,8 @@ public class Boot {
 				System.out.println("skip file [" + files.get(i) + "]");
 			}
 		}
-		URLClassLoader loader = new URLClassLoader(urls);
+		ClassLoader loader = new URLClassLoader(urls, Thread.currentThread()
+				.getContextClassLoader());
 		Thread.currentThread().setContextClassLoader(loader);
 
 		try {

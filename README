@@ -1,4 +1,4 @@
-Java¶ÀÁ¢½ø³ÌµÄÆô¶¯³ÌĞò£¬×÷ÓÃÊÇ°ÑÖ¸¶¨Ä¿Â¼µÄjar°üÌí¼Óµ½Ö÷Ïß³ÌµÄContextClassLoaderÀï¡£
+Javaç‹¬ç«‹è¿›ç¨‹çš„å¯åŠ¨ç¨‹åºï¼Œä½œç”¨æ˜¯æŠŠæŒ‡å®šç›®å½•çš„jaråŒ…æ·»åŠ åˆ°ä¸»çº¿ç¨‹çš„ContextClassLoaderé‡Œã€‚
 
-Æô¶¯½Å±¾ÓÃ·¨£º
-java -cp boot.jar -Dbootmain="just.test.MyMain" -Dbootlibs="D:/workroom/java/wsmaven/test/target" Boot p1 p2 p3 p4
+å¯åŠ¨è„šæœ¬ç”¨æ³•ï¼š
+java -cp boot-1.0.0.jar -Dbootmain="just.test.MyMain" -Dbootlibs="libdir1;libdir2" Boot p1 p2 p3 p4
