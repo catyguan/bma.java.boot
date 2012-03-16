@@ -19,6 +19,24 @@ public class Boot {
 		}
 	}
 
+	public static class Wait {
+		public static void main(String[] args) {
+			System.out.println("waiting...");
+			final Thread t = Thread.currentThread();
+			Runtime.getRuntime().addShutdownHook(new Thread() {
+				@Override
+				public void run() {
+					t.interrupt();
+				}
+			});
+			try {
+				Thread.sleep(Long.MAX_VALUE);
+			} catch (InterruptedException e) {
+				System.out.println("Interrupted!");
+			}
+		}
+	}
+
 	/**
 	 * @param args
 	 */
