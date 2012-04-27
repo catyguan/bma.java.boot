@@ -4,9 +4,12 @@ BOOTPATH=./
 BOOTPID=${BOOTPATH}boot.pid
 BOOTLOG=${BOOTPATH}boot.log
 
-JAVAHOME=/usr/local/jdk1.7.0_03
-JAVAOPT=
-JAVACP='./classes:./boot-1.0.0.jar:./libs/*.jar'
+export LANG=zh_CN.UTF-8
+export TZ="Asia/Shanghai"
+
+JAVAHOME=/data/services/java-6.0.27
+JAVAOPT='-Xmx512m'
+JAVACP='.:./classes:./libs/*'
 
 MAINCLASS='Boot$Wait'
 MAINARGS="p1 p2 p3 p4"
